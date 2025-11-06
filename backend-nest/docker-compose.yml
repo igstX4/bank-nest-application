@@ -1,0 +1,24 @@
+version: '3.8'
+
+
+services:
+
+
+  database:
+    image: postgres:latest  
+    environment:
+      POSTGRES_DB: BankApp  #
+      POSTGRES_USER: postgres   
+      POSTGRES_PASSWORD: postgress_pass_22 
+    ports:
+      - "5432:5432"  
+
+  # Backend service
+  backend:
+    build: .  
+    ports:
+      - "4000:4000"  
+    depends_on:
+      - database  
+    env_file:
+      - .env  

@@ -8,11 +8,14 @@ CREATE TABLE "User" (
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateEnum
+CREATE TYPE "Currency" AS ENUM ('USD', 'EUR');
+
 -- CreateTable
 CREATE TABLE "Account" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
-    "currency" TEXT NOT NULL,
+    "currency" "Currency" NOT NULL,
     "balance" DECIMAL(10,2) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
