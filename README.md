@@ -147,3 +147,5 @@ bank/
 
 - [Frontend (Vercel)](https://bank-nest-application.vercel.app)
 - [Backend (Render)](https://bank-nest-application.onrender.com)
+- > ⚠️ The backend hosted on Render (Free Tier) goes to sleep after ~15 minutes of inactivity and may take up to a minute to wake up on the next request.
+
