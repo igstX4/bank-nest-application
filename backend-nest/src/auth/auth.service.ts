@@ -5,6 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { BCRYPT_SALT_ROUNDS } from '../config/constants';
 import { AccountsRepository } from '../accounts/accounts.repository';
+import { Currency } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -27,8 +28,8 @@ export class AuthService {
       const user = await this.usersRepo.createInTx(tx, { email, password: hash });
 
       await this.accountsRepo.createManyInTx(tx, [
-        { userId: user.id, currency: 'USD', balance: '1000.00' },
-        { userId: user.id, currency: 'EUR', balance: '500.00' },
+        { userId: user.id, currency: Currency.USD, balance: '1000.00' },
+        { userId: user.id, currency: Currency.EUR, balance: '500.00' },
       ]);
       const token = await this.jwt.signAsync({ sub: user.id, email: user.email });
       return { token };

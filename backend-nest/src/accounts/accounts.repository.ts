@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { Account } from '@prisma/client';
+import { Account, Currency } from '@prisma/client';
 import type { Prisma } from '@prisma/client';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class AccountsRepository {
     });
   }
 
-  async createManyInTx(tx: Prisma.TransactionClient, data: Array<{ userId: number; currency: string; balance: string }>) {
+  async createManyInTx(tx: Prisma.TransactionClient, data: Array<{ userId: number; currency: Currency; balance: string }>) {
     return tx.account.createMany({ data });
   }
 
