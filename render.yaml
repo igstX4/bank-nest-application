@@ -2,7 +2,6 @@ services:
   - type: web
     name: bank-backend
     env: node
-    plan: starter
     rootDir: backend-nest
     buildCommand: npm install --legacy-peer-deps && npx prisma generate && npm run build
     startCommand: npm run start:migrate:prod
@@ -20,6 +19,5 @@ services:
 
 databases:
   - name: bank-database
-    plan: starter
     databaseName: bankapp
 
