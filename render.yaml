@@ -21,6 +21,5 @@ services:
 databases:
   - name: bank-database
     plan: starter
-    databaseName: BankApp
-    user: postgres
+    databaseName: bankapp
 
