@@ -3,6 +3,7 @@ services:
     name: bank-backend
     env: node
     plan: starter
+    rootDir: backend-nest
     buildCommand: npm install --legacy-peer-deps && npx prisma generate && npm run build
     startCommand: npm run start:migrate:prod
     envVars:
